@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://050se82uu1s3"]
+
+[ext_resource type="Script" uid="uid://dyhklis1io8tn" path="res://scenes/survivor.gd" id="1_po4ca"]
+[ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="2_nyg4v"]
+[ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="2_y3tea"]
+[ext_resource type="Texture2D" uid="uid://bl16way1b6ce7" path="res://assets/sprites/survivor/body.png" id="3_y3tea"]
+[ext_resource type="Texture2D" uid="uid://dwdd62t0xqtw4" path="res://assets/sprites/survivor/head.png" id="4_mxbgk"]
+[ext_resource type="Texture2D" uid="uid://du11kbvccset6" path="res://assets/sprites/pistol.png" id="5_x46rf"]
+[ext_resource type="Texture2D" uid="uid://c3a05rroe31k0" path="res://assets/sprites/survivor/hand.png" id="6_v1pt4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6h15h"]
+radius = 6.0
+
+[node name="Survivor" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_po4ca")
+
+[node name="HealthSystem" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_y3tea")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6666667)
+position = Vector2(0, 12)
+texture = ExtResource("2_nyg4v")
+
+[node name="Body" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+
+[node name="Body" type="Sprite2D" parent="Body"]
+texture = ExtResource("3_y3tea")
+
+[node name="Head" type="Sprite2D" parent="Body"]
+texture = ExtResource("4_mxbgk")
+
+[node name="AimPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 3)
+
+[node name="Hand" type="Node2D" parent="AimPivot"]
+unique_name_in_owner = true
+position = Vector2(9, 0)
+
+[node name="Pistol" type="Sprite2D" parent="AimPivot/Hand"]
+texture = ExtResource("5_x46rf")
+offset = Vector2(5, -2)
+
+[node name="Hand" type="Sprite2D" parent="AimPivot/Hand"]
+texture = ExtResource("6_v1pt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_6h15h")
+debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://i5t47vkxlw3l"]
+
+[ext_resource type="Script" uid="uid://df1eunfusyhdx" path="res://scenes/zombie.gd" id="1_ycv6i"]
+[ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="2_4gx57"]
+[ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="2_7pfmu"]
+[ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="2_pjjxt"]
+[ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="3_ycv6i"]
+[ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="4_pjjxt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6h15h"]
+radius = 10.049875
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
+radius = 256.0
+
+[node name="Zombie" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_ycv6i")
+
+[node name="HealthSystem" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_pjjxt")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.6666667)
+position = Vector2(0, 12)
+texture = ExtResource("2_7pfmu")
+
+[node name="Body" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+
+[node name="Body" type="Sprite2D" parent="Body"]
+texture = ExtResource("2_4gx57")
+
+[node name="Head" type="Sprite2D" parent="Body"]
+texture = ExtResource("3_ycv6i")
+
+[node name="AimPivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 3)
+
+[node name="Hand" type="Node2D" parent="AimPivot"]
+unique_name_in_owner = true
+position = Vector2(9, 0)
+
+[node name="Hand" type="Sprite2D" parent="AimPivot/Hand"]
+position = Vector2(0, -4)
+texture = ExtResource("4_pjjxt")
+
+[node name="Hand2" type="Sprite2D" parent="AimPivot/Hand"]
+position = Vector2(0, 1)
+texture = ExtResource("4_pjjxt")
+
+[node name="BumpShape" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_6h15h")
+debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
+
+[node name="ScanArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="ScanShape" type="CollisionShape2D" parent="ScanArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_4gx57")
+debug_color = Color(0.7, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true

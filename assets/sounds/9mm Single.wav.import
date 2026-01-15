@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm66sj3gm8dro"
+path="res://.godot/imported/9mm Single.wav-05f0841acc660e2abfc5c58d304b29e4.sample"
+
+[deps]
+
+source_file="res://assets/sounds/9mm Single.wav"
+dest_files=["res://.godot/imported/9mm Single.wav-05f0841acc660e2abfc5c58d304b29e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
