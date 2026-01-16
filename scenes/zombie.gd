@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var health_system: HealthSystem = %HealthSystem
 
+# Declare new NavAgent2D
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+
 @export var speed = 63.0
 
 var direction: Vector2 = Vector2.ZERO
@@ -18,11 +21,25 @@ func _physics_process(_delta: float) -> void:
 
 	direction = Vector2.ZERO
 	if closest_enemy:
-		direction = global_position.direction_to(closest_enemy.global_position)
+		#Set the zombie's target position
+		nav_agent.target_position = closest_enemy.global_position
+		
+		#Log the values created by nav_mesh to correctly set the objects position
+		var current_pos = self.global_position
+		var next_path_position = nav_agent.get_next_path_position()
+		var new_velocity = current_pos.direction_to(next_path_position) * speed
+		
+		#Check if the path is valid or not, if not velocity will be set to zero and new path will be calculated.
+		if nav_agent.avoidance_enabled :
+			nav_agent.set_velocity(new_velocity)
+		#If no obstacles are detected, set the velocity to the new direction.
+		else:
+			_on_navigation_agent_2d_velocity_computed(new_velocity)
+			aim_at(closest_enemy.global_position)
+		move_and_slide()
 
-	velocity = direction * speed
-	aim_angle(velocity.angle())
-	move_and_slide()
+
+
 
 func aim_at(pos: Vector2):
 	%AimPivot.look_at(pos)
@@ -77,3 +94,8 @@ func _on_zero_health():
 	hurt_tween.tween_property(hand, "modulate", Color.TRANSPARENT, 0.2)
 	await hurt_tween.finished
 	queue_free()
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	#This method is just filtering the velocity after the nav mesh has correctly set it.

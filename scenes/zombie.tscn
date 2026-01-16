@@ -72,3 +72,15 @@ metadata/_edit_lock_ = true
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 10.33
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.25636053, 0.3314156, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.572
+autostart = true
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
