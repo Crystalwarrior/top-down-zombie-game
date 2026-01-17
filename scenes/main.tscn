@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bgkofnalpdfvn" path="res://assets/sprites/grass_tile.png" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://050se82uu1s3" path="res://scenes/survivor.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://i5t47vkxlw3l" path="res://scenes/zombie.tscn" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://bgqrbmouc4nkl" path="res://scenes/obstacleLayer.gd" id="3_tbgi4"]
-[ext_resource type="Script" uid="uid://dkmqwhnqkg4s7" path="res://scenes/obstaclebuild.gd" id="4_tefeu"]
+[ext_resource type="Script" path="res://scenes/obstacleLayer.gd" id="3_tbgi4"]
+[ext_resource type="Script" path="res://scenes/obstaclebuild.gd" id="4_tefeu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_tefeu"]
 
@@ -59,29 +59,29 @@ position = Vector2(256, 144)
 
 [node name="Camera2D" type="Camera2D" parent="YSortEntityGroup/Survivor"]
 
-[node name="Zombie" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(632, 56)
 
-[node name="Zombie2" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie2" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(663, 56)
 
-[node name="Zombie3" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie3" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(632, 85)
 
-[node name="Zombie4" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie4" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(662, 82)
 
-[node name="Zombie5" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie5" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(605, 53)
 
-[node name="Zombie6" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie6" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(605, 87)
 
-[node name="Zombie7" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie7" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(633, 111)
 
-[node name="Zombie8" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie8" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(691, 56)
 
-[node name="Zombie9" parent="." instance=ExtResource("3_sugp2")]
+[node name="Zombie9" parent="YSortEntityGroup" instance=ExtResource("3_sugp2")]
 position = Vector2(691, 81)
