@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		#If no obstacles are detected, set the velocity to the new direction.
 		else:
 			_on_navigation_agent_2d_velocity_computed(new_velocity)
-			aim_at(closest_enemy.global_position)
+		aim_angle(new_velocity.angle())
 		move_and_slide()
 
 
