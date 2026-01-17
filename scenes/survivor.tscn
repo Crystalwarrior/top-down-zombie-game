@@ -21,11 +21,12 @@ script = ExtResource("2_y3tea")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6666667)
-position = Vector2(0, 12)
+position = Vector2(0, 9)
 texture = ExtResource("2_nyg4v")
 
 [node name="Body" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -3)
 
 [node name="Body" type="Sprite2D" parent="Body"]
 texture = ExtResource("3_y3tea")
@@ -35,7 +36,6 @@ texture = ExtResource("4_mxbgk")
 
 [node name="AimPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 3)
 
 [node name="Hand" type="Node2D" parent="AimPivot"]
 unique_name_in_owner = true
@@ -49,7 +49,7 @@ offset = Vector2(5, -2)
 texture = ExtResource("6_v1pt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_6h15h")
 debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
 

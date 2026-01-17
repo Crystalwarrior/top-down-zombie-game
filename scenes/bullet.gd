@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	if get_overlapping_bodies().size() > 0:
 		var closest_body: Node2D = null
 		for body: Node2D in get_overlapping_bodies():
-			if body in pierced_bodies:
+			if body in pierced_bodies or not body.has_method("bullet_impact"):
 				continue
 			var distance = global_position.distance_to(body.global_position)
 			if closest_body == null or distance < global_position.distance_to(closest_body.global_position):
