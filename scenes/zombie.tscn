@@ -15,7 +15,6 @@ radius = 256.0
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_ycv6i")
 
 [node name="HealthSystem" type="Node" parent="."]
@@ -24,11 +23,12 @@ script = ExtResource("2_pjjxt")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6666667)
-position = Vector2(0, 12)
+position = Vector2(0, 9)
 texture = ExtResource("2_7pfmu")
 
 [node name="Body" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -3)
 
 [node name="Body" type="Sprite2D" parent="Body"]
 texture = ExtResource("2_4gx57")
@@ -38,7 +38,6 @@ texture = ExtResource("3_ycv6i")
 
 [node name="AimPivot" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 3)
 
 [node name="Hand" type="Node2D" parent="AimPivot"]
 unique_name_in_owner = true
@@ -54,7 +53,7 @@ texture = ExtResource("4_pjjxt")
 
 [node name="BumpShape" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 2)
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_6h15h")
 debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
 
@@ -74,7 +73,11 @@ metadata/_edit_lock_ = true
 unique_name_in_owner = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-radius = 10.33
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 5.0
+neighbor_distance = 30.0
+max_speed = 64.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.25636053, 0.3314156, 1)
