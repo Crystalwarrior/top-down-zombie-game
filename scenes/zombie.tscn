@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://i5t47vkxlw3l"]
+[gd_scene load_steps=13 format=3 uid="uid://i5t47vkxlw3l"]
 
 [ext_resource type="Script" uid="uid://df1eunfusyhdx" path="res://scenes/zombie.gd" id="1_ycv6i"]
 [ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="2_4gx57"]
@@ -7,19 +7,252 @@
 [ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="3_ycv6i"]
 [ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="4_pjjxt"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjjxt"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_pjjxt"]
+resource_name = "claw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.50000006, 0.53333336, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(-2.8782654, -5.8782654), Vector2(-5.8832765, -9.883276), Vector2(1.5276294, -2.4723701), Vector2(1.5208399, -2.4791596), Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.50000006, 0.53333336, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 1, 2),
+"update": 0,
+"values": [0.0, -0.34693068, -0.34484866, 0.5712419, 0.56870306, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hand2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.50000006, 0.53333336, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 1, 2),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(-2.8782654, -0.8782654), Vector2(-5.8832765, -4.883277), Vector2(1.5276294, 2.5276299), Vector2(1.5208399, 2.5208404), Vector2(0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.50000006, 0.53333336, 1),
+"transitions": PackedFloat32Array(2, 2, 2, 2, 1, 2),
+"update": 0,
+"values": [0.0, -0.34693068, -0.34484866, 0.5712419, 0.56870306, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtZone/HurtCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3666668, 0.4000001, 0.5333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hand:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 0.53333336, 0.6333333),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4895453, 1.4895453), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hand2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.3, 0.53333336, 0.6333333),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4895453, 1.4895453), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hand2:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.6333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Hand:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.6333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_7pfmu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hand2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HurtZone/HurtCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hand:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hand2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hand2:z_index")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Hand:z_index")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3fthk"]
+_data = {
+&"RESET": SubResource("Animation_7pfmu"),
+&"claw": SubResource("Animation_pjjxt")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6h15h"]
 radius = 10.049875
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
 radius = 256.0
 
-[node name="Zombie" type="CharacterBody2D"]
+[node name="Zombie" type="CharacterBody2D" groups=["ZombieGroup"]]
 collision_layer = 4
 script = ExtResource("1_ycv6i")
 
 [node name="HealthSystem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_pjjxt")
+health = 3.0
+max_health = 3.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6666667)
@@ -51,6 +284,25 @@ texture = ExtResource("4_pjjxt")
 position = Vector2(0, 1)
 texture = ExtResource("4_pjjxt")
 
+[node name="HurtZone" type="Area2D" parent="AimPivot/Hand"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="HurtCollision" type="CollisionShape2D" parent="AimPivot/Hand/HurtZone"]
+unique_name_in_owner = true
+position = Vector2(-1, -1)
+shape = SubResource("CircleShape2D_pjjxt")
+disabled = true
+debug_color = Color(0.7, 0, 0, 0.41960785)
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="AimPivot/Hand"]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_3fthk")
+}
+
 [node name="BumpShape" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -1)
@@ -78,7 +330,6 @@ avoidance_enabled = true
 radius = 5.0
 neighbor_distance = 30.0
 max_speed = 64.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0.25636053, 0.3314156, 1)
 

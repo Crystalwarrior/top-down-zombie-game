@@ -32,6 +32,10 @@ folder_colors={
 "res://scenes/": "blue"
 }
 
+[global_group]
+
+ZombieGroup=""
+
 [input]
 
 up={

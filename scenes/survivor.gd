@@ -7,7 +7,7 @@ extends CharacterBody2D
 var bullet_scene = preload("uid://dkk63rewjas47")
 
 func _ready() -> void:
-	pass
+	health_system.zero_health.connect(_on_zero_health)
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -46,3 +46,36 @@ func shoot():
 
 func bullet_impact(bullet: Bullet):
 	pass
+
+func melee_impact(cause: Node2D):
+	health_system.hurt(cause.melee_damage)
+	if health_system.health <= 0:
+		return true
+	if hurt_tween:
+		hurt_tween.kill()
+	hurt_tween = create_tween().set_parallel(true)
+	var body: Node2D = %Body
+	var hand: Node2D = %Hand
+	body.self_modulate = Color(5.0, 0.0, 0.0)
+	hurt_tween.tween_property(body, "self_modulate", Color.WHITE, 0.2)
+	hand.modulate = Color(5.0, 0.0, 0.0)
+	hurt_tween.tween_property(hand, "modulate", Color.WHITE, 0.2)
+	return true
+
+var hurt_tween: Tween
+func _on_zero_health():
+	set_process(false)
+	set_physics_process(false)
+	%Audio.stream = load("res://assets/sounds/gorekill.wav")
+	%Audio.play()
+	if hurt_tween:
+		hurt_tween.kill()
+	hurt_tween = create_tween().set_parallel(true)
+	var body: Node2D = %Body
+	var hand: Node2D = %Hand
+	body.self_modulate = Color(5.0, 0.0, 0.0)
+	hurt_tween.tween_property(body, "self_modulate", Color.RED, 0.2)
+	hand.modulate = Color(5.0, 0.0, 0.0)
+	hurt_tween.tween_property(hand, "modulate", Color.RED, 0.2)
+	await hurt_tween.finished
+	print("GAME OVER BITCH")

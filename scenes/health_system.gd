@@ -1,9 +1,10 @@
 extends Node
 class_name HealthSystem
 
-@export var health = 3.0
-@export var max_health = 3.0
+@export var health = 10.0
+@export var max_health = 10.0
 
+signal changed
 signal damaged(by: float)
 signal healed(by: float)
 signal zero_health
@@ -18,6 +19,7 @@ func set_health(value: float):
 		damaged.emit(difference)
 		if health <= 0:
 			zero_health.emit()
+	changed.emit()
 
 func heal(value: float):
 	set_health(health + value)

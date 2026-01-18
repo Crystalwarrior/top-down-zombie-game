@@ -7,6 +7,10 @@ extends CharacterBody2D
 
 @export var speed = 63.0
 
+@export var melee_distance = 24
+
+@export var melee_damage = 1
+
 var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -14,10 +18,12 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var closest_enemy = null
+	var closest_distance
 	for enemy in %ScanArea.get_overlapping_bodies():
 		var enemy_distance = global_position.distance_to(enemy.global_position)
 		if closest_enemy == null or enemy_distance < closest_enemy.global_position.distance_to(global_position):
 			closest_enemy = enemy
+			closest_distance = enemy_distance
 
 	direction = Vector2.ZERO
 	if closest_enemy:
@@ -37,7 +43,15 @@ func _physics_process(_delta: float) -> void:
 			_on_navigation_agent_2d_velocity_computed(new_velocity)
 		aim_angle(new_velocity.angle())
 		move_and_slide()
+		
+		if closest_distance <= melee_distance:
+			%AttackAnimationPlayer.play("claw")
 
+	if closest_enemy in %HurtZone.get_overlapping_bodies():
+		if closest_enemy.melee_impact(self):
+			%Audio.stream = load("res://assets/sounds/tear.wav")
+			%Audio.play()
+			%HurtCollision.disabled = true
 
 
 
