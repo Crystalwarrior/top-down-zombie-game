@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 @onready var health_system: HealthSystem = %HealthSystem
 
 # Declare new NavAgent2D

@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://i5t47vkxlw3l"]
+[gd_scene load_steps=9 format=3 uid="uid://c0f20egkwjphd"]
 
-[ext_resource type="Script" uid="uid://df1eunfusyhdx" path="res://scenes/zombie.gd" id="1_ycv6i"]
-[ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="2_4gx57"]
-[ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="2_7pfmu"]
-[ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="2_pjjxt"]
-[ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="3_ycv6i"]
-[ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="4_pjjxt"]
+[ext_resource type="PackedScene" uid="uid://cgerwscr8xc4g" path="res://scenes/HumanoidInheritors/humanoid.tscn" id="1_rww7k"]
+[ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="3_mqlbn"]
+[ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="4_1oy8c"]
+[ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="5_w6nqd"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pjjxt"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l0lms"]
 radius = 6.0
 
 [sub_resource type="Animation" id="Animation_7pfmu"]
@@ -63,7 +61,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HurtZone/HurtCollision:disabled")
+tracks/4/path = NodePath("../../AimPivot/Hand/HurtZone/HurtCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -174,7 +172,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("HurtZone/HurtCollision:disabled")
+tracks/4/path = NodePath("../../AimPivot/Hand/HurtZone/HurtCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -238,103 +236,37 @@ _data = {
 &"claw": SubResource("Animation_pjjxt")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6h15h"]
-radius = 10.049875
+[node name="Zombie" instance=ExtResource("1_rww7k")]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4gx57"]
-radius = 256.0
+[node name="Body" parent="Body" index="0"]
+texture = ExtResource("3_mqlbn")
 
-[node name="Zombie" type="CharacterBody2D" groups=["ZombieGroup"]]
-collision_layer = 4
-script = ExtResource("1_ycv6i")
+[node name="Head" parent="Body" index="1"]
+texture = ExtResource("4_1oy8c")
 
-[node name="HealthSystem" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("2_pjjxt")
-health = 3.0
-max_health = 3.0
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.6666667)
-position = Vector2(0, 9)
-texture = ExtResource("2_7pfmu")
-
-[node name="Body" type="CanvasGroup" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -3)
-
-[node name="Body" type="Sprite2D" parent="Body"]
-texture = ExtResource("2_4gx57")
-
-[node name="Head" type="Sprite2D" parent="Body"]
-texture = ExtResource("3_ycv6i")
-
-[node name="AimPivot" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Hand" type="Node2D" parent="AimPivot"]
-unique_name_in_owner = true
-position = Vector2(9, 0)
-
-[node name="Hand" type="Sprite2D" parent="AimPivot/Hand"]
+[node name="Hand" parent="AimPivot/Hand" index="0"]
 position = Vector2(0, -4)
-texture = ExtResource("4_pjjxt")
+texture = ExtResource("5_w6nqd")
 
-[node name="Hand2" type="Sprite2D" parent="AimPivot/Hand"]
+[node name="Hand2" type="Sprite2D" parent="AimPivot/Hand" index="1"]
 position = Vector2(0, 1)
-texture = ExtResource("4_pjjxt")
+texture = ExtResource("5_w6nqd")
 
-[node name="HurtZone" type="Area2D" parent="AimPivot/Hand"]
+[node name="HurtZone" type="Area2D" parent="AimPivot/Hand" index="2"]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="HurtCollision" type="CollisionShape2D" parent="AimPivot/Hand/HurtZone"]
+[node name="HurtCollision" type="CollisionShape2D" parent="AimPivot/Hand/HurtZone" index="0"]
 unique_name_in_owner = true
 position = Vector2(-1, -1)
-shape = SubResource("CircleShape2D_pjjxt")
+shape = SubResource("CircleShape2D_l0lms")
 disabled = true
 debug_color = Color(0.7, 0, 0, 0.41960785)
 
-[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="AimPivot/Hand"]
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="AimPivot/Hand" index="3"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_3fthk")
 }
-
-[node name="BumpShape" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(0, -1)
-shape = SubResource("CircleShape2D_6h15h")
-debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
-
-[node name="ScanArea" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="ScanShape" type="CollisionShape2D" parent="ScanArea"]
-unique_name_in_owner = true
-shape = SubResource("CircleShape2D_4gx57")
-debug_color = Color(0.7, 0, 0, 0)
-metadata/_edit_lock_ = true
-
-[node name="Audio" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-avoidance_enabled = true
-radius = 5.0
-neighbor_distance = 30.0
-max_speed = 64.0
-debug_use_custom = true
-debug_path_custom_color = Color(1, 0.25636053, 0.3314156, 1)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.572
-autostart = true
-
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
