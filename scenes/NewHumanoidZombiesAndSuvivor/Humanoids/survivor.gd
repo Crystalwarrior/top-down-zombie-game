@@ -1,9 +1,14 @@
+
 extends Humanoid
 
 
 @export var speed = 64.0
 
 var bullet_scene = preload("uid://dkk63rewjas47")
+
+
+func _ready() -> void:
+	_startWeapon()
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))

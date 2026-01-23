@@ -1,11 +1,13 @@
+@icon ("res://assets/sprites/Humanoid.png")
 extends CharacterBody2D
-class_name Humanoid ## The class which all zombies and survivors inherit from.
+## The class which all zombies and survivors inherit from.
 ##
 ##This class currently contains:
 ##Aim Pivot Logic
 ##Health System and Death logic
 ##Damage type detection (Ex. Melee or Projectile Damage)
 ##Weapon/Inventory System
+class_name Humanoid 
 
 
 
@@ -41,6 +43,10 @@ func aim_correct():
 		%Hand.scale.y = 1
 		%Body.scale.x = 1
 
+
+func aim_angle(angle: float):
+	%AimPivot.rotation = angle
+	aim_correct()
 #-----
 # Health System
 #-----
@@ -103,5 +109,5 @@ func bullet_impact(bullet: Bullet) -> bool:
 #-----
 
 #Give the humanoid a weapon on spawn by signalling to the Inventory System script.
-func _startWeapon(weapon: String) :
+func _startWeapon(weapon: Weapon) :
 	inventory_system.add_item(weapon)

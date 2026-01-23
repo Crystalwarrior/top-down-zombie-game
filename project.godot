@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TopDownZombieGame"
-run/main_scene="uid://b83lvy55y6ryp"
+run/main_scene="uid://cs0lelc23db0k"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -30,7 +30,7 @@ folder_colors={
 "res://globals/": "pink",
 "res://resources/": "yellow",
 "res://scenes/": "blue",
-"res://scenes/HumanoidInheritors/": "pink"
+"res://scenes/NewHumanoidZombiesAndSuvivor/": "pink"
 }
 
 [global_group]

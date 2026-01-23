@@ -6,9 +6,9 @@ var selected_item
 
 
 
-func _set_inventory(item: String):
+func _set_inventory(item: Weapon):
 	inventory.append(item)
 	print(inventory)
 
-func add_item(new_item: String):
+func add_item(new_item: Weapon):
 	_set_inventory(new_item)

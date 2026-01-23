@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0f20egkwjphd"]
+[gd_scene load_steps=12 format=3 uid="uid://c0f20egkwjphd"]
 
-[ext_resource type="PackedScene" uid="uid://cgerwscr8xc4g" path="res://scenes/HumanoidInheritors/humanoid.tscn" id="1_rww7k"]
+[ext_resource type="PackedScene" uid="uid://cgerwscr8xc4g" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/humanoid.tscn" id="1_rww7k"]
+[ext_resource type="Script" uid="uid://d4b3iy70eifnu" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/zombie.gd" id="2_rww7k"]
 [ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="3_mqlbn"]
 [ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="4_1oy8c"]
 [ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="5_w6nqd"]
@@ -236,7 +237,18 @@ _data = {
 &"claw": SubResource("Animation_pjjxt")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rww7k"]
+radius = 10.049875
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dslg"]
+radius = 256.0
+
 [node name="Zombie" instance=ExtResource("1_rww7k")]
+collision_layer = 4
+script = ExtResource("2_rww7k")
+speed = 63.0
+melee_distance = 24
+melee_damage = 1
 
 [node name="Body" parent="Body" index="0"]
 texture = ExtResource("3_mqlbn")
@@ -270,3 +282,35 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_3fthk")
 }
+
+[node name="BumpShape" type="CollisionShape2D" parent="." index="7"]
+unique_name_in_owner = true
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_rww7k")
+debug_color = Color(0, 0.6, 0.7019608, 0.20784314)
+
+[node name="ScanArea" type="Area2D" parent="." index="8"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="ScanShape" type="CollisionShape2D" parent="ScanArea" index="0"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_0dslg")
+debug_color = Color(0.7, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="Audio2" type="AudioStreamPlayer2D" parent="." index="9"]
+unique_name_in_owner = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="10"]
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 5.0
+neighbor_distance = 30.0
+max_speed = 64.0
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0.25636053, 0.3314156, 1)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

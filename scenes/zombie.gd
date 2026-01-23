@@ -6,7 +6,7 @@ extends CharacterBody2D
 # Declare new NavAgent2D
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 
-@export var speed = 63.0
+@export var speed = 20
 
 @export var melee_distance = 24
 

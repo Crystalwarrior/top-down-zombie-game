@@ -1,27 +1,27 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgerwscr8xc4g"]
 
-[ext_resource type="Script" uid="uid://ebv7qex7bcpa" path="res://scenes/HumanoidInheritors/humanoid.gd" id="1_bngdi"]
-[ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="2_7dar5"]
-[ext_resource type="Script" uid="uid://ff7rlc2jkke4" path="res://scenes/inventory_system.gd" id="2_vkd1g"]
-[ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="4_cujmo"]
+[ext_resource type="Script" uid="uid://ebv7qex7bcpa" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/humanoid.gd" id="1_b0hq3"]
+[ext_resource type="Script" uid="uid://ff7rlc2jkke4" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/inventory_system.gd" id="2_qqgc7"]
+[ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="3_4q20b"]
+[ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="4_0kvbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_repc6"]
 radius = 6.0
 
 [node name="Humanoid" type="CharacterBody2D"]
-script = ExtResource("1_bngdi")
+script = ExtResource("1_b0hq3")
 
 [node name="Inventory" type="Node" parent="."]
-script = ExtResource("2_vkd1g")
+script = ExtResource("2_qqgc7")
 
 [node name="HealthSystem" type="Node" parent="."]
-script = ExtResource("2_7dar5")
+script = ExtResource("3_4q20b")
 metadata/_custom_type_script = "uid://b2i7revwbq52f"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.6666667)
 position = Vector2(0, 9)
-texture = ExtResource("4_cujmo")
+texture = ExtResource("4_0kvbq")
 
 [node name="Body" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
