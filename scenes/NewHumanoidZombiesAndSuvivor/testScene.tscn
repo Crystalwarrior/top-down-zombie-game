@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dstp5kr47j58s"]
 
-[ext_resource type="PackedScene" uid="uid://b83lvy55y6ryp" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Survivor.tscn" id="1_q4a5a"]
-[ext_resource type="PackedScene" uid="uid://c0f20egkwjphd" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Zombie.tscn" id="2_5s07d"]
+[ext_resource type="PackedScene" uid="uid://b83lvy55y6ryp" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/Survivor.tscn" id="1_q4a5a"]
+[ext_resource type="PackedScene" uid="uid://c0f20egkwjphd" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/Zombie.tscn" id="2_5s07d"]
 
 [node name="TestScene" type="Node2D"]
 

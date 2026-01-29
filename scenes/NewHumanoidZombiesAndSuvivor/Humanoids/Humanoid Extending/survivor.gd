@@ -6,9 +6,12 @@ extends Humanoid
 
 var bullet_scene = preload("uid://dkk63rewjas47")
 
+#Change/add/remove starting weapon data in the inspector!
+@export var starting_weapons : Array[WeaponData]
 
 func _ready() -> void:
-	_startWeapon()
+	for weapon in starting_weapons:
+		add_weapon(weapon)
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -24,13 +27,15 @@ func _process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		shoot()
+		use_weapon()
+		if event.is_action_pressed("changeweapon"):
+			cycle_weapon()
 
-func shoot():
-	var bullet: Node2D = bullet_scene.instantiate()
-	get_tree().root.add_child(bullet)
-	bullet.global_position = %Hand.global_position
-	bullet.damage = 1.0
-	bullet.shoot(Vector2.from_angle(%AimPivot.rotation)*2, 2.0)
-	%Audio.stream = load("res://assets/sounds/gunshot.wav")
-	%Audio.play()
+func use_weapon():
+	if weapon_inventory.size() == 0:
+		print ("Oh Shit I'm unarmed!")
+		return
+	else:
+		print("I have a weapon! Let me shoot it!")
+		current_weapon.use_weapon()
+	

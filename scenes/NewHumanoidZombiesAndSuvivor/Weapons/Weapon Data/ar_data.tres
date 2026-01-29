@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=4 format=3 uid="uid://b0ir1te7pn3l6"]
+
+[ext_resource type="PackedScene" uid="uid://dkk63rewjas47" path="res://scenes/ally_bullet.tscn" id="1_u2wew"]
+[ext_resource type="Script" uid="uid://c5h60kfp1umlt" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/BaseWeaponScripts/weapon_data.gd" id="2_7helo"]
+[ext_resource type="PackedScene" uid="uid://dtrj5whv54cwq" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/WeaponScenes/AR.tscn" id="3_g0ne2"]
+
+[resource]
+script = ExtResource("2_7helo")
+name = "assault rifle"
+bullet_scene = ExtResource("1_u2wew")
+weapon_scene = ExtResource("3_g0ne2")
+attack_rate = 2
+metadata/_custom_type_script = "uid://c5h60kfp1umlt"

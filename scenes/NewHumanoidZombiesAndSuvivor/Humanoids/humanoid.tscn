@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgerwscr8xc4g"]
 
 [ext_resource type="Script" uid="uid://ebv7qex7bcpa" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/humanoid.gd" id="1_b0hq3"]
-[ext_resource type="Script" uid="uid://ff7rlc2jkke4" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/inventory_system.gd" id="2_qqgc7"]
+[ext_resource type="Script" uid="uid://ff7rlc2jkke4" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/BaseWeaponScripts/inventory_system.gd" id="2_qqgc7"]
 [ext_resource type="Script" uid="uid://b2i7revwbq52f" path="res://scenes/health_system.gd" id="3_4q20b"]
 [ext_resource type="Texture2D" uid="uid://b6y6ud6f2cue2" path="res://assets/sprites/shadow.png" id="4_0kvbq"]
 

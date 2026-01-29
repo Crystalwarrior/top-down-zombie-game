@@ -1,0 +1,25 @@
+[gd_scene load_steps=9 format=3 uid="uid://b83lvy55y6ryp"]
+
+[ext_resource type="PackedScene" uid="uid://cgerwscr8xc4g" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/humanoid.tscn" id="1_trj2p"]
+[ext_resource type="Script" uid="uid://dq2n8ie327k52" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/survivor.gd" id="2_lg1ox"]
+[ext_resource type="Script" uid="uid://c5h60kfp1umlt" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/BaseWeaponScripts/weapon_data.gd" id="3_gqo7q"]
+[ext_resource type="Texture2D" uid="uid://bl16way1b6ce7" path="res://assets/sprites/survivor/body.png" id="3_u40x1"]
+[ext_resource type="Resource" uid="uid://cti5jxo8q5jv4" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/Weapon Data/pistol_data.tres" id="4_l171q"]
+[ext_resource type="Texture2D" uid="uid://dwdd62t0xqtw4" path="res://assets/sprites/survivor/head.png" id="4_muaom"]
+[ext_resource type="Resource" uid="uid://b0ir1te7pn3l6" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/Weapon Data/ar_data.tres" id="5_bn2ab"]
+[ext_resource type="Texture2D" uid="uid://c3a05rroe31k0" path="res://assets/sprites/survivor/hand.png" id="6_ghj31"]
+
+[node name="Survivor" instance=ExtResource("1_trj2p")]
+collision_layer = 2
+script = ExtResource("2_lg1ox")
+speed = 64.0
+starting_weapons = Array[ExtResource("3_gqo7q")]([ExtResource("4_l171q"), ExtResource("5_bn2ab")])
+
+[node name="Body" parent="Body" index="0"]
+texture = ExtResource("3_u40x1")
+
+[node name="Head" parent="Body" index="1"]
+texture = ExtResource("4_muaom")
+
+[node name="Hand" parent="AimPivot/Hand" index="0"]
+texture = ExtResource("6_ghj31")

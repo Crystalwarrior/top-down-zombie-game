@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://c0f20egkwjphd"]
 
 [ext_resource type="PackedScene" uid="uid://cgerwscr8xc4g" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/humanoid.tscn" id="1_rww7k"]
-[ext_resource type="Script" uid="uid://d4b3iy70eifnu" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/zombie.gd" id="2_rww7k"]
+[ext_resource type="Script" uid="uid://d4b3iy70eifnu" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/zombie.gd" id="2_rww7k"]
 [ext_resource type="Texture2D" uid="uid://c85ixv750g77j" path="res://assets/sprites/zombie/body.png" id="3_mqlbn"]
 [ext_resource type="Texture2D" uid="uid://dxioc3wb0o3li" path="res://assets/sprites/zombie/head.png" id="4_1oy8c"]
 [ext_resource type="Texture2D" uid="uid://dhgen4juohtca" path="res://assets/sprites/zombie/hand.png" id="5_w6nqd"]

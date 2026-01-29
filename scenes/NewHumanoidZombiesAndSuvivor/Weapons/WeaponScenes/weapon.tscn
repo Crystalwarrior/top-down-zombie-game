@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c07s0v8arvjhl"]
+
+[ext_resource type="Script" uid="uid://d4nievxe5dubx" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/BaseWeaponScripts/Weapon.gd" id="1_khj0r"]
+
+[node name="Weapon" type="Sprite2D"]
+script = ExtResource("1_khj0r")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]

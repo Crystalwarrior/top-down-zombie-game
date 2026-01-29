@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bgkofnalpdfvn" path="res://assets/sprites/grass_tile.png" id="4_4wuyk"]
 [ext_resource type="Script" uid="uid://bgqrbmouc4nkl" path="res://scenes/obstacleLayer.gd" id="5_orh7k"]
 [ext_resource type="Script" uid="uid://dkmqwhnqkg4s7" path="res://scenes/obstaclebuild.gd" id="6_nxq5c"]
-[ext_resource type="PackedScene" uid="uid://c0f20egkwjphd" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Zombie.tscn" id="8_3pve5"]
-[ext_resource type="PackedScene" uid="uid://b83lvy55y6ryp" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Survivor.tscn" id="8_bc6u6"]
+[ext_resource type="PackedScene" uid="uid://c0f20egkwjphd" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/Zombie.tscn" id="8_3pve5"]
+[ext_resource type="PackedScene" uid="uid://b83lvy55y6ryp" path="res://scenes/NewHumanoidZombiesAndSuvivor/Humanoids/Humanoid Extending/Survivor.tscn" id="8_bc6u6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 content_margin_left = 2.0
@@ -136,7 +136,7 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="YSortEntityGroup/Survivor"]
 
-[node name="Zombie" parent="." instance=ExtResource("8_3pve5")]
+[node name="Zombie" parent="YSortEntityGroup" instance=ExtResource("8_3pve5")]
 position = Vector2(552, 220)
 speed = 20.0
 

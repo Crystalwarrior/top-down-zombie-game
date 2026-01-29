@@ -107,7 +107,44 @@ func bullet_impact(bullet: Bullet) -> bool:
 #-----
 #Weapons and Inventory
 #-----
+#To add a weapon to an inventory, do NOT add the scene, instance, or anything. ONLY reference
+#weapons by their Data/resource and instantiate things using the scene/prefab contained in that
+#weapon data. Ex. data.weapon_scene.instantiate, etc.
 
-#Give the humanoid a weapon on spawn by signalling to the Inventory System script.
-func _startWeapon(weapon: Weapon) :
-	inventory_system.add_item(weapon)
+
+var weapon_inventory: Array [WeaponData] = []
+var current_weapon_index = -1
+var current_weapon: Weapon
+
+func add_weapon(data: WeaponData) -> void:
+
+	weapon_inventory.append(data)
+	equip_weapon(0)
+	print("added " + data.name)
+
+#
+func equip_weapon(index: int) -> void:
+#Checking if there are any weapons OR the player has the weapon with the high index.
+	if index < 0 or index >= weapon_inventory.size():
+		return
+#Destros the previous weapon's node
+	if current_weapon:
+		current_weapon.queue_free()
+#Finds the new weapons data and instantiates the scene contained in the data.
+	var weapon_data = weapon_inventory[index]
+	var weapon_instance = weapon_data.weapon_scene.instantiate()
+	%Hand.add_child(weapon_instance)
+	print("instantiated " + weapon_instance.name + 'as child of' + weapon_instance.get_parent().name)
+
+#Logs the current weapon in the var and it's index and sets up the weapons values.
+	current_weapon = weapon_instance
+	current_weapon._setup_weapons(weapon_data,self)
+	current_weapon_index = index
+
+func cycle_weapon() -> void:
+	if weapon_inventory.is_empty():
+		return
+#When the player presses the cycle weapon button, moves the index up by 1 and loops it around the
+#current size of the weapon inventory using the % operator.
+	current_weapon_index = (current_weapon_index + 1) % weapon_inventory.size()
+	equip_weapon(current_weapon_index)
