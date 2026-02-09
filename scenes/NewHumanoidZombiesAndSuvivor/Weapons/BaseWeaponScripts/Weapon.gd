@@ -27,6 +27,6 @@ func attack() -> void:
 	get_tree().root.add_child(bullet)
 	bullet.global_position = self.get_parent().global_position
 	bullet.damage = 1.0
-	bullet.shoot(Vector2.from_angle(self.get_parent().rotation)*2, 2.0)
+	bullet.shoot(Vector2.from_angle(self.get_parent().global_rotation)*2, 2.0)
 	$Audio.stream = load("res://assets/sounds/gunshot.wav")
 	$Audio.play()
