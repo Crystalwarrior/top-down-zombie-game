@@ -11,11 +11,13 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	if direction.length() > 0:
+		direction = direction.normalized()
 	velocity = direction * speed
 
 	move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	aim_at(get_global_mouse_position())
 
 func _input(event: InputEvent) -> void:
@@ -44,8 +46,6 @@ func shoot():
 	%Audio.stream = load("res://assets/sounds/gunshot.wav")
 	%Audio.play()
 
-func bullet_impact(bullet: Bullet):
-	pass
 
 func melee_impact(cause: Node2D):
 	health_system.hurt(cause.melee_damage)

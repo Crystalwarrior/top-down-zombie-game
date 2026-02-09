@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtrj5whv54cwq"]
+
+[ext_resource type="PackedScene" uid="uid://c07s0v8arvjhl" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/WeaponScenes/weapon.tscn" id="1_jtgx2"]
+[ext_resource type="Texture2D" uid="uid://ddvif2bnq8u31" path="res://assets/sprites/assaultriflet.png" id="2_5mqng"]
+
+[node name="AR" instance=ExtResource("1_jtgx2")]
+texture = ExtResource("2_5mqng")

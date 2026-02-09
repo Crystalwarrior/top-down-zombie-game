@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwj5ubfkqjmw3"]
+
+[ext_resource type="PackedScene" uid="uid://c07s0v8arvjhl" path="res://scenes/NewHumanoidZombiesAndSuvivor/Weapons/WeaponScenes/weapon.tscn" id="1_qirhi"]
+[ext_resource type="Texture2D" uid="uid://du11kbvccset6" path="res://assets/sprites/pistol.png" id="2_p1wxm"]
+
+[node name="Pistol" instance=ExtResource("1_qirhi")]
+texture = ExtResource("2_p1wxm")
